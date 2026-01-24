@@ -133,7 +133,7 @@ export default function Home() {
                         AI-powered prescriptions, smart bookings, and integrated records ensure smooth, accurate, and efficient care delivery.
                     </p>
                     <div className="flex flex-wrap items-center justify-center gap-4">
-                        <button onClick={() => router.push('/auth/login')} className="rounded-lg bg-primary-theme px-6 py-3 font-semibold text-primary-theme-foreground shadow-lg transition hover:opacity-90">
+                        <button onClick={() => router.push('/contact')} className="rounded-lg bg-primary-theme px-6 py-3 font-semibold text-primary-theme-foreground shadow-lg transition hover:opacity-90">
                             Transforming the Curing Process
                         </button>
                     </div>
@@ -400,10 +400,10 @@ export default function Home() {
                                     </ul>
                                     <div className="flex flex-wrap gap-4 pt-6 relative">
                                         <button className="bg-white text-primary-theme px-8 py-4 rounded-lg font-bold text-xs uppercase hover:bg-white/90 transition-all shadow-xl active:scale-95">
-                                            Try For Free
+                                            Try it now
                                         </button>
                                         <button className="bg-transparent border border-white/40 text-white px-8 py-4 rounded-lg font-bold text-xs uppercase hover:bg-white/10 transition-all active:scale-95">
-                                            Request a Quote
+                                            Explore
                                         </button>
                                     </div>
                                 </div>

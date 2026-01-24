@@ -88,8 +88,8 @@ export default function ModuleDetailPage() {
                                 {activeModule.shortDesc} Access this portal using your <strong>{activeModule.loginWith}</strong>.
                             </p>
                             <div className="flex flex-col gap-4">
-                                <button onClick={() => router.push('/auth/login')} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded font-bold transition-all text-center">
-                                    Login to {activeModule.title}
+                                <button onClick={() => router.push('/contact')} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded font-bold transition-all text-center">
+                                    Contact Us
                                 </button>
                                 <p className="text-xs text-slate-400 text-center">Protected by MSCureChain Secure Session Logic</p>
                             </div>

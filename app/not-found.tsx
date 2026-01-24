@@ -1,12 +1,24 @@
 'use client';
 
 import Link from 'next/link';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function NotFound() {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+
+  useEffect(() => {
+    const animation = animate(count, 404, { duration: 1 });
+    return animation.stop;
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center px-4">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-gray-900 mb-4">404</h1>
+        <motion.h1 className="text-6xl font-bold text-gray-900 mb-4">
+          {rounded}
+        </motion.h1>
         <h2 className="text-2xl font-semibold text-gray-700 mb-4">Page Not Found</h2>
         <p className="text-gray-600 mb-8 max-w-md">
           Sorry, the page you are looking for doesn&apos;t exist or has been moved.

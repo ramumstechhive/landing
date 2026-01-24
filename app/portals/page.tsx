@@ -33,7 +33,7 @@ export default function PortalsPage() {
             features: ["patient Registration ", "Appointment Booking", "OPD payments ", "Appointment tracking "],
             color: "text-slate-900",
             bg: "bg-slate-100",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
         {
             title: "Patient Portal",
@@ -43,7 +43,7 @@ export default function PortalsPage() {
             features: ["View  Appointments", "Lab Report History", "Digital Prescriptions", "Medication History", "Medication History"],
             color: "text-blue-600",
             bg: "bg-blue-50",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
         {
             title: "Doctor Portal",
@@ -53,7 +53,7 @@ export default function PortalsPage() {
             features: ["Smart Patient Queues", "One-Click Consultations", "AI-Suggested Diagnoses", "Digital Prescription Engine", "Patient Clinical History"],
             color: "text-emerald-600",
             bg: "bg-emerald-50",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
         {
             title: "Hospital Admin Portal",
@@ -63,7 +63,7 @@ export default function PortalsPage() {
             features: ["Staff & Role Management", "Real-time Hospital Analytics", "OPD/IPD Operations", "Centralized Billing Control", ""],
             color: "text-purple-600",
             bg: "bg-purple-50",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
         {
             title: "Lab Portal",
@@ -73,7 +73,7 @@ export default function PortalsPage() {
             features: ["Manage Test Requests", "Sample Collection Tracking", "Result Analysis Tools", "Automated Report Generation", "Instant Result Notifications"],
             color: "text-rose-600",
             bg: "bg-rose-50",
-            loginUrl: "/lab/login"
+            loginUrl: "/contact"
         },
         {
             title: "Pharmacy Portal",
@@ -83,7 +83,7 @@ export default function PortalsPage() {
             features: ["Supplier & Batch Management", "Real-time Stock Tracking", "Automated Inventory Alerts", "Point of Sale (POS) Billing", "Supplier & Batch Management"],
             color: "text-amber-600",
             bg: "bg-amber-50",
-            loginUrl: "/pharmacy/login"
+            loginUrl: "/contact"
         },
         {
             title: "Discharge Portal",
@@ -93,7 +93,7 @@ export default function PortalsPage() {
             features: ["Discharge Summary", "Discharge Instructions", "Discharge Medications", "Discharge Instructions", "Discharge Instructions"],
             color: "text-slate-900",
             bg: "bg-slate-100",
-            loginUrl: "/discharge/login"
+            loginUrl: "/contact"
         },
         {
             title: "Emergency Portal",
@@ -103,7 +103,7 @@ export default function PortalsPage() {
             features: ["Critical care documentation", " Incident Logging", "Live Trauma Feed", "Discharge Instructions", "Discharge Instructions"],
             color: "text-slate-900",
             bg: "bg-slate-100",
-            loginUrl: "/emergency-login"
+            loginUrl: "/contact"
         },
         {
             title: "Nurse Portal",
@@ -113,7 +113,7 @@ export default function PortalsPage() {
             features: ["Medication Administration (MAR)", "Patient Vitals Monitoring", "Nursing Task Queue", "Ward & Bed Management"],
             color: "text-emerald-600",
             bg: "bg-emerald-50",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
         {
             title: "Staff Portal",
@@ -123,7 +123,7 @@ export default function PortalsPage() {
             features: ["Staff Attendance Tracking", "Shift Management", "Internal Messaging System", "Performance Analytics"],
             color: "text-amber-600",
             bg: "bg-amber-50",
-            loginUrl: "/auth/login"
+            loginUrl: "/contact"
         },
     ]
 

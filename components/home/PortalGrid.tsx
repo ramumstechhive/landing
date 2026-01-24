@@ -30,7 +30,7 @@ const servicePortals = [
       shadow: 'hover:shadow-blue-500/20',
       iconBg: 'bg-blue-50',
     },
-    path: '/auth/login',
+    path: '/about/patient-portal',
   },
   {
     title: 'Doctor Portal',
@@ -45,7 +45,7 @@ const servicePortals = [
       shadow: 'hover:shadow-emerald-500/20',
       iconBg: 'bg-emerald-50',
     },
-    path: '/auth/login',
+    path: '/about/doctor-terminal',
   },
   {
     title: 'Hospital Admin',
@@ -60,7 +60,7 @@ const servicePortals = [
       shadow: 'hover:shadow-indigo-500/20',
       iconBg: 'bg-indigo-50',
     },
-    path: '/auth/login',
+    path: '/about/hospital-admin',
   },
   {
     title: 'Lab & Diagnostics',
@@ -75,7 +75,7 @@ const servicePortals = [
       shadow: 'hover:shadow-purple-500/20',
       iconBg: 'bg-purple-50',
     },
-    path: '/lab/login',
+    path: '/about/lab-diagnostics',
   },
   {
     title: 'Pharmacy Portal',
@@ -90,7 +90,7 @@ const servicePortals = [
       shadow: 'hover:shadow-teal-500/20',
       iconBg: 'bg-teal-50',
     },
-    path: '/pharmacy/login',
+    path: '/about/pharmacy-pos',
   },
   {
     title: 'Emergency Care',
@@ -105,7 +105,21 @@ const servicePortals = [
       shadow: 'hover:shadow-red-500/20',
       iconBg: 'bg-red-50',
     },
-    path: '/emergency-login',
+    path: '/about/emergency-ems',
+  },{
+    title: 'Attendance Portal',
+    desc: 'Automated attendance tracking for all hospital staff.',
+    icon: FileText,
+    color: 'teal',
+    image: '/assets/attedence.png',
+    classes: {
+      bg: 'bg-teal-500/10',
+      text: 'text-teal-600',
+      border: 'hover:border-teal-500/50',
+      shadow: 'hover:shadow-teal-500/20',
+      iconBg: 'bg-teal-50',
+    },
+    path: '/about/staff-portal',
   },
   {
     title: 'Nurse Portal',
@@ -120,7 +134,23 @@ const servicePortals = [
       shadow: 'hover:shadow-emerald-500/20',
       iconBg: 'bg-emerald-50',
     },
-    path: '/auth/login',
+    path: '/about/nurse-portal',
+  },
+  
+  {
+    title: 'HR Portal',
+    desc: 'Complete Human Resource management system.',
+    icon: Users,
+    color: 'indigo',
+    image: '/assets/hr.png',
+    classes: {
+      bg: 'bg-indigo-500/10',
+      text: 'text-indigo-600',
+      border: 'hover:border-indigo-500/50',
+      shadow: 'hover:shadow-indigo-500/20',
+      iconBg: 'bg-indigo-50',
+    },
+    path: '/about/staff-portal',
   }
 ];
 
@@ -138,7 +168,7 @@ const adminPortals = [
       shadow: 'hover:shadow-orange-500/20',
       iconBg: 'bg-orange-50',
     },
-    path: '/auth/login',
+    path: '/about/helpdesk-reception',
   },
   {
     title: 'Staff Portal',
@@ -153,7 +183,7 @@ const adminPortals = [
       shadow: 'hover:shadow-amber-500/20',
       iconBg: 'bg-amber-50',
     },
-    path: '/auth/login',
+    path: '/about/staff-portal',
   },
   {
     title: 'Discharge Procedure',
@@ -168,7 +198,7 @@ const adminPortals = [
       shadow: 'hover:shadow-slate-500/20',
       iconBg: 'bg-slate-50',
     },
-    path: '/discharge/login',
+    path: '/about/discharge-center',
   }
 ];
 

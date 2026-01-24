@@ -101,7 +101,7 @@ export default function FeaturesPage() {
                                 MSCureChain combines next-generation AI with robust blockchain security to create the most advanced hospital management ecosystem available today.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <button onClick={() => router.push('/auth/login')} className="bg-primary-theme hover:bg-primary-theme/90 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary-theme/25 hover:-translate-y-1">
+                                <button onClick={() => router.push('/contact')} className="bg-primary-theme hover:bg-primary-theme/90 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary-theme/25 hover:-translate-y-1">
                                     Get Started Now
                                 </button>
                                 <button className="bg-card border border-border hover:bg-muted/10 text-foreground px-8 py-4 rounded-2xl font-bold transition-all shadow-lg hover:-translate-y-1">

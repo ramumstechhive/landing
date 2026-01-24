@@ -10,11 +10,8 @@ import {
     Building2,
     MapPin,
     CheckCircle2,
-    Download,
     AlertCircle
 } from 'lucide-react';
-import ExcelJS from 'exceljs';
-import { saveAs } from 'file-saver';
 
 interface Contact {
     name: string;
@@ -68,11 +65,17 @@ export default function ContactPage() {
             newErrors.phone = 'Phone number must be exactly 10 digits';
         }
 
-        // Email: Standard email validation
+        // Email: Standard email validation + strict .com check
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Please enter a valid email address';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.com$/.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address ending with .com (e.g., user@example.com)';
+        }
+
+        // Business/Hospital Name: Alphabetic characters only (Optional field, but validate if present)
+        if (formData.businessName.trim() && !/^[A-Za-z\s]+$/.test(formData.businessName)) {
+
+            newErrors.businessName = 'Hospital Name must contain only alphabetic characters';
         }
 
         if (!formData.address.trim()) {
@@ -108,41 +111,6 @@ export default function ContactPage() {
         }
     };
 
-    const handleExport = async () => {
-        if (contacts.length === 0) {
-            alert('No data to export!');
-            return;
-        }
-
-        const workbook = new ExcelJS.Workbook();
-        const worksheet = workbook.addWorksheet('Contacts');
-
-        worksheet.columns = [
-            { header: 'Name', key: 'name', width: 25 },
-            { header: 'Phone Number', key: 'phone', width: 15 },
-            { header: 'Email', key: 'email', width: 25 },
-            { header: 'Business Name', key: 'businessName', width: 25 },
-            { header: 'Address', key: 'address', width: 40 },
-            { header: 'Date Submitted', key: 'timestamp', width: 20 },
-        ];
-
-        // Add style to headers
-        worksheet.getRow(1).font = { bold: true };
-        worksheet.getRow(1).fill = {
-            type: 'pattern',
-            pattern: 'solid',
-            fgColor: { argb: 'FFE0E0E0' }
-        };
-
-        contacts.forEach(contact => {
-            worksheet.addRow(contact);
-        });
-
-        const buffer = await workbook.xlsx.writeBuffer();
-        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-        saveAs(blob, `MSCure_Contacts_${new Date().toISOString().split('T')[0]}.xlsx`);
-    };
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
 
@@ -150,6 +118,11 @@ export default function ContactPage() {
         if (name === 'phone') {
             const numericValue = value.replace(/\D/g, '').slice(0, 10);
             setFormData(prev => ({ ...prev, [name]: numericValue }));
+        } else if (name === 'name' || name === 'businessName') {
+            // Allow only alphabets and spaces
+            if (/^[A-Za-z\s]*$/.test(value)) {
+                setFormData(prev => ({ ...prev, [name]: value }));
+            }
         } else {
             setFormData(prev => ({ ...prev, [name]: value }));
         }
@@ -199,25 +172,16 @@ export default function ContactPage() {
                                         <Phone size={18} />
                                     </div>
                                     <span className="text-slate-700 font-bold">+91 9032223352</span>
+                                    <div className="w-10 h-10 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
+                                        <Phone size={18} />
+                                    </div>
+                                    <span className="text-slate-700 font-bold">+91 9492321619</span>
+
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-primary-theme p-8 rounded-[1.5rem] text-white space-y-4 shadow-xl">
-                            <div className="flex justify-between items-center">
-                                <h3 className="text-lg font-black uppercase tracking-widest">Submissions Pool</h3>
 
-                            </div>
-                            <p className="text-white/80 text-sm font-medium">
-                                Review and export all captured contact details for your business records.
-                            </p>
-                            <button
-                                onClick={handleExport}
-                                className="w-full bg-white text-primary-theme py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-slate-50 transition-all active:scale-95 shadow-lg"
-                            >
-                                <Download size={16} className='rotate-180' /> Export
-                            </button>
-                        </div>
                     </div>
 
                     {/* Form Side */}
@@ -296,7 +260,7 @@ export default function ContactPage() {
                                     {/* Business Name */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                            <Building2 size={14} className="text-primary-theme" /> Business Name
+                                            <Building2 size={14} className="text-primary-theme" /> Hospital Name
                                         </label>
                                         <input
                                             name="businessName"
@@ -304,8 +268,9 @@ export default function ContactPage() {
                                             value={formData.businessName}
                                             onChange={handleChange}
                                             placeholder="Optional"
-                                            className="w-full px-5 py-4 border border-slate-100 bg-slate-50 rounded-xl outline-none focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5 transition-all font-medium"
+                                            className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium ${errors.businessName ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                         />
+                                        {errors.businessName && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.businessName}</p>}
                                     </div>
                                 </div>
 
@@ -339,75 +304,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Submissions Table Section */}
-                <div className="mt-24 space-y-8">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-4">
-                        <div className="space-y-2 text-left">
-                            <h2 className="text-3xl font-black text-slate-900 tracking-tight uppercase">Recent Submissions</h2>
-                            <p className="text-slate-500 font-medium">Overview of all captured inquiries from the local pool.</p>
-                        </div>
-                        <button
-                            onClick={handleExport}
-                            className="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-primary-theme transition-all active:scale-95 shadow-lg group"
-                        >
-                            <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-                            Export Master List
-                        </button>
-                    </div>
 
-                    <div className="bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden">
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="bg-slate-50 border-b border-slate-200">
-                                        <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Name</th>
-                                        <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Contact Info</th>
-                                        <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Business</th>
-                                        <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Address</th>
-                                        <th className="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-slate-100">
-                                    {contacts.length === 0 ? (
-                                        <tr>
-                                            <td colSpan={5} className="px-8 py-20 text-center text-slate-400 font-medium uppercase tracking-widest text-xs">
-                                                No submissions found in your local storage
-                                            </td>
-                                        </tr>
-                                    ) : (
-                                        contacts.map((contact, idx) => (
-                                            <tr key={idx} className="hover:bg-slate-50/50 transition-colors group">
-                                                <td className="px-8 py-6">
-                                                    <span className="text-slate-900 font-bold block">{contact.name}</span>
-                                                </td>
-                                                <td className="px-8 py-6 space-y-1">
-                                                    <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
-                                                        <Mail size={14} className="text-primary-theme" /> {contact.email}
-                                                    </div>
-                                                    <div className="flex items-center gap-2 text-sm font-medium text-slate-600">
-                                                        <Phone size={14} className="text-primary-theme" /> {contact.phone}
-                                                    </div>
-                                                </td>
-                                                <td className="px-8 py-6">
-                                                    <span className="text-sm font-bold text-slate-600 uppercase tracking-tight">
-                                                        {contact.businessName || 'N/A'}
-                                                    </span>
-                                                </td>
-                                                <td className="px-8 py-6">
-                                                    <p className="text-sm text-slate-500 max-w-[200px] truncate group-hover:whitespace-normal group-hover:truncate-none transition-all">
-                                                        {contact.address}
-                                                    </p>
-                                                </td>
-                                                <td className="px-8 py-6 text-right">
-                                                    <span className="text-[10px] font-black text-slate-400 uppercase">{contact.timestamp}</span>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </main>
 
             <Footer />
