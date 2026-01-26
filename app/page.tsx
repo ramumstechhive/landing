@@ -129,17 +129,17 @@ export default function Home() {
                 >
                     <div className="absolute inset-0 bg-slate-900/70" />
                     <div className="relative z-10 max-w-4xl px-6 text-center text-white">
-            
+
                         <h1 className="mb-6 text-4xl font-extrabold leading-tight md:text-5xl uppercase tracking-tighter">
-                           Modern Hospital Management System  <span className="text-primary-theme">Curing Process</span>
+                            Modern Hospital Management System  <span className="text-primary-theme">Curing Process</span>
                         </h1>
                         <p className="mb-10 text-base leading-relaxed text-slate-200 md:text-lg">
                             MSCureChain securely connects hospitals, doctors, labs, pharmacies, and patients on one unified digital platform.
                             AI-powered prescriptions, smart bookings, and integrated records ensure smooth, accurate, and efficient care delivery.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-4">
-                            <button onClick={() => router.push('/contact')} className="rounded-lg bg-primary-theme px-6 py-3 font-semibold text-primary-theme-foreground shadow-lg transition hover:opacity-90">
-                                Transforming the Curing Process
+                            <button onClick={() => router.push('/contact')} className="rounded-xl bg-primary-theme px-10 py-5 text-lg font-bold text-primary-theme-foreground shadow-2xl shadow-primary-theme/40 transition-all hover:scale-105 hover:bg-primary-theme/90 active:scale-95">
+                                Request a Live Hospital Demo
                             </button>
                         </div>
                     </div>
@@ -244,8 +244,8 @@ export default function Home() {
                                         ))}
                                     </div>
                                     <div className="pt-4">
-                                        <button onClick={() => router.push('/features')} className="bg-primary-theme hover:bg-primary-theme/90 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary-theme/25 flex items-center justify-center gap-2 group w-full sm:w-auto">
-                                            Explore AI Features
+                                        <button onClick={() => router.push('/features')} className="bg-primary-theme hover:bg-primary-theme/90 text-white px-10 py-5 rounded-2xl font-bold transition-all shadow-xl shadow-primary-theme/25 flex items-center justify-center gap-3 group w-full sm:w-auto hover:scale-105 active:scale-95">
+                                            Book a 15-Minute Product Walkthrough
                                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                         </button>
                                     </div>
@@ -404,11 +404,11 @@ export default function Home() {
                                             ))}
                                         </ul>
                                         <div className="flex flex-wrap gap-4 pt-6 relative">
-                                            <button className="bg-white text-primary-theme px-8 py-4 rounded-lg font-bold text-xs uppercase hover:bg-white/90 transition-all shadow-xl active:scale-95">
-                                                Try it now
+                                            <button className="bg-white text-primary-theme px-10 py-5 rounded-xl font-bold text-sm uppercase hover:bg-white/90 transition-all shadow-xl active:scale-95 hover:scale-105">
+                                                Request a Live Demo
                                             </button>
-                                            <button className="bg-transparent border border-white/40 text-white px-8 py-4 rounded-lg font-bold text-xs uppercase hover:bg-white/10 transition-all active:scale-95">
-                                                Explore
+                                            <button className="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-sm uppercase hover:bg-white/10 transition-all active:scale-95">
+                                                Talk to an Expert
                                             </button>
                                         </div>
                                     </div>
@@ -449,8 +449,8 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <div className="pt-8 border-t border-border-theme">
-                                            <button onClick={() => router.push('/portals')} className="w-full bg-foreground text-background py-5 rounded-2xl font-black text-sm uppercase hover:bg-primary-theme transition-all tracking-[0.2em] shadow-xl hover:shadow-primary-theme/20 active:scale-[0.98] flex items-center justify-center gap-2 group">
-                                                EXPLORE ALL MODULES
+                                            <button onClick={() => router.push('/portals')} className="w-full bg-foreground text-background py-6 rounded-2xl font-black text-sm uppercase hover:bg-primary-theme hover:text-white transition-all tracking-[0.2em] shadow-xl hover:shadow-primary-theme/20 active:scale-[0.98] flex items-center justify-center gap-3 group">
+                                                Talk to a Healthcare Solutions Expert
                                                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                             </button>
                                         </div>
@@ -537,8 +537,8 @@ export default function Home() {
                                 ))}
                             </div>
                             <div className="flex justify-center">
-                                <button onClick={() => router.push('/portals')} className="inline-flex items-center gap-3 px-10 py-5 font-bold group overflow-hidden relative bg-foreground text-background rounded-2xl tracking-[0.2em]">
-                                    <span className="relative z-10 uppercase">Explore Platform</span>
+                                <button onClick={() => router.push('/portals')} className="inline-flex items-center gap-4 px-12 py-6 font-bold group overflow-hidden relative bg-foreground text-background rounded-2xl tracking-[0.2em] hover:bg-primary-theme hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95">
+                                    <span className="relative z-10 uppercase">Get Started with MSCureChain</span>
                                     <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
@@ -614,9 +614,9 @@ export default function Home() {
                         <div className="mt-16 text-center">
                             <button
                                 onClick={() => router.push('/contact')}
-                                className="inline-flex items-center gap-2 text-primary-theme font-bold hover:underline"
+                                className="inline-flex items-center gap-3 bg-primary-theme text-white px-10 py-5 rounded-2xl font-bold shadow-xl shadow-primary-theme/20 hover:scale-105 transition-all active:scale-95"
                             >
-                                Still have questions? Contact support <ArrowRight size={16} />
+                                Talk to a Healthcare Solutions Expert <ArrowRight size={20} />
                             </button>
                         </div>
                     </div>

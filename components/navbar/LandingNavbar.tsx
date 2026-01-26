@@ -81,9 +81,9 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
                     className="flex items-center gap-2 group cursor-pointer"
                     onClick={() => router.push('/')}
                 >
-                    
-                        <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
-                
+
+                    <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+
                     <span className="text-xl font-bold bg-linear-to-r from-primary-theme to-blue-400 bg-clip-text text-transparent">
                         MSCureChain
                     </span>
@@ -114,7 +114,7 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
                         onClick={() => router.push('/auth/login')}
                         className="hidden sm:block bg-primary-theme hover:bg-primary-theme/90 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary-theme/20 hover:-translate-y-0.5"
                     >
-                        {variant === 'detail' ? 'Sign In' : 'Get Started'}
+                        {variant === 'detail' ? 'Sign In' : 'Request a Free Demo'}
                     </button>
 
                     {/* Mobile Menu Toggle */}
@@ -148,7 +148,7 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
                         }}
                         className="w-full bg-primary-theme text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary-theme/20"
                     >
-                        Get Started
+                        Request a Free Demo
                     </button>
                 </div>
             </div>
