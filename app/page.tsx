@@ -38,6 +38,7 @@ import LandingNavbar from "@/components/navbar/LandingNavbar";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import FloatingAudioPlayer from "@/components/home/FloatingAudioPlayer";
 import { motion, AnimatePresence } from "framer-motion";
+import DeploymentSecurity from "@/components/home/DeploymentSecurity";
 
 export default function Home() {
     const router = useRouter();
@@ -128,8 +129,9 @@ export default function Home() {
                 >
                     <div className="absolute inset-0 bg-slate-900/70" />
                     <div className="relative z-10 max-w-4xl px-6 text-center text-white">
+            
                         <h1 className="mb-6 text-4xl font-extrabold leading-tight md:text-5xl uppercase tracking-tighter">
-                            Digitalize the <span className="text-primary-theme">Curing Process</span>
+                           Modern Hospital Management System  <span className="text-primary-theme">Curing Process</span>
                         </h1>
                         <p className="mb-10 text-base leading-relaxed text-slate-200 md:text-lg">
                             MSCureChain securely connects hospitals, doctors, labs, pharmacies, and patients on one unified digital platform.
@@ -496,6 +498,8 @@ export default function Home() {
                     </div>
                 </section >
 
+                <DeploymentSecurity />
+
                 {/* Unified Healthcare Solution Section */}
                 <section className="py-24 bg-background relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-theme/5 rounded-full blur-[120px] -mr-64 -mt-32 -z-10" />
@@ -617,7 +621,7 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-            </main> 
+            </main>
 
             <Footer />
         </div >
