@@ -107,108 +107,112 @@ export default function AboutPage() {
 
     return (
         <div className="min-h-screen bg-white text-slate-800 font-sans selection:bg-blue-100">
-            <LandingNavbar variant="about" />
+            <header>
+                <LandingNavbar variant="about" />
+            </header>
 
-            {/* Simple Hero */}
-            <section className="pt-40 pb-20 px-6 text-center bg-slate-50 border-b border-slate-100">
-                <div className="max-w-4xl mx-auto space-y-6">
+            <main>
+                {/* Simple Hero */}
+                <section className="pt-40 pb-20 px-6 text-center bg-slate-50 border-b border-slate-100">
+                    <div className="max-w-4xl mx-auto space-y-6">
 
-                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                        Clinical Flow. <br />
-                        <span className="text-blue-600">Perfectly Synced.</span>
-                    </h1>
-                    <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
-                        A clinical ecosystem designed to be professional, fast, and easy to use.
-                        Explore how MSCureChain connects doctors and patients.
-                    </p>
-                </div>
-            </section>
+                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
+                            Clinical Flow. <br />
+                            <span className="text-blue-600">Perfectly Synced.</span>
+                        </h1>
+                        <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed">
+                            A clinical ecosystem designed to be professional, fast, and easy to use.
+                            Explore how MSCureChain connects doctors and patients.
+                        </p>
+                    </div>
+                </section>
 
-            {/* Simple Architecture Grid */}
-            <section id="architecture" className="py-24 px-6 border-b border-slate-100">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-20 items-center">
-                        <div className="space-y-8">
-                            <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">01. How We Work</h2>
-                            <p className="text-lg text-slate-600 leading-relaxed font-normal">
-                                MSCureChain uses a **Singular Data Source** model. This means that instead of every department having its own computer system, everyone works on one unified platform.
-                            </p>
-                            <div className="space-y-6">
-                                <FeatureLine icon={Layers} title="Unified Ledger" text="All medical records are stored in one safe, synchronized place for every branch." />
-                                <FeatureLine icon={Network} title="Instant Relay" text="Reports and prescriptions reach you as soon as they are signed by the clinician." />
-                                <FeatureLine icon={ShieldCheck} title="AES-256 Security" text="Your data is protected by enterprise-grade clinical encryption standards." />
+                {/* Simple Architecture Grid */}
+                <section id="architecture" className="py-24 px-6 border-b border-slate-100">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="grid md:grid-cols-2 gap-20 items-center">
+                            <div className="space-y-8">
+                                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">01. How We Work</h2>
+                                <p className="text-lg text-slate-600 leading-relaxed font-normal">
+                                    MSCureChain uses a **Singular Data Source** model. This means that instead of every department having its own computer system, everyone works on one unified platform.
+                                </p>
+                                <div className="space-y-6">
+                                    <FeatureLine icon={Layers} title="Unified Ledger" text="All medical records are stored in one safe, synchronized place for every branch." />
+                                    <FeatureLine icon={Network} title="Instant Relay" text="Reports and prescriptions reach you as soon as they are signed by the clinician." />
+                                    <FeatureLine icon={ShieldCheck} title="AES-256 Security" text="Your data is protected by enterprise-grade clinical encryption standards." />
+                                </div>
+                            </div>
+                            <div className="rounded-[0.5rem] overflow-hidden shadow-2xl transition-all duration-1000 border border-slate-100 bg-slate-50">
+                                <img src="../assets/about.png" alt="Advanced Hospital Management Technology Architecture" className="w-full h-full object-cover" />
                             </div>
                         </div>
-                        <div className="rounded-[0.5rem] overflow-hidden shadow-2xl transition-all duration-1000 border border-slate-100 bg-slate-50">
-                            <img src="../assets/about.png" alt="Hospital Technology" className="w-full h-full object-cover" />
+                    </div>
+                </section>
+
+                {/* Simple Login Section */}
+                <section id="login" className="py-24 px-6 bg-slate-50 border-b border-slate-100">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16 space-y-2">
+                            <h2 className="text-3xl font-bold text-slate-900">02.Unified Access Points</h2>
+                            <p className="text-slate-500 font-medium">Two simple ways to access your healthcare dashboard.</p>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Simple Login Section */}
-            <section id="login" className="py-24 px-6 bg-slate-50 border-b border-slate-100">
-                <div className="max-w-7xl mx-auto">
-                    <div className="text-center mb-16 space-y-2">
-                        <h2 className="text-3xl font-bold text-slate-900">02.Unified Access Points</h2>
-                        <p className="text-slate-500 font-medium">Two simple ways to access your healthcare dashboard.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <div className="bg-white p-10 rounded-[0.5rem] border border-slate-100 shadow-sm hover:border-blue-500 transition-all group">
-                            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                                <Smartphone size={28} />
+                        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            <div className="bg-white p-10 rounded-[0.5rem] border border-slate-100 shadow-sm hover:border-blue-500 transition-all group">
+                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                                    <Smartphone size={28} />
+                                </div>
+                                <h3 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-tight">Patient Entry</h3>
+                                <p className="text-slate-500 mb-8 leading-relaxed font-medium">Simple and secure. Log in with your registered mobile number and get an instant OTP code sent to your phone.</p>
+                                <label className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-4">Features:</label>
+                                <ul className="space-y-4 text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                                    <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-500" /> Password-free login</li>
+                                    <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-500" /> Instant health history</li>
+                                </ul>
                             </div>
-                            <h3 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-tight">Patient Entry</h3>
-                            <p className="text-slate-500 mb-8 leading-relaxed font-medium">Simple and secure. Log in with your registered mobile number and get an instant OTP code sent to your phone.</p>
-                            <label className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-4">Features:</label>
-                            <ul className="space-y-4 text-[11px] font-black text-slate-400 uppercase tracking-wider">
-                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-500" /> Password-free login</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-500" /> Instant health history</li>
-                            </ul>
-                        </div>
-                        <div className="bg-white p-10 rounded-[0.5rem] border border-slate-100 shadow-sm hover:border-blue-500 transition-all group">
-                            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                                <Lock size={28} />
+                            <div className="bg-white p-10 rounded-[0.5rem] border border-slate-100 shadow-sm hover:border-blue-500 transition-all group">
+                                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
+                                    <Lock size={28} />
+                                </div>
+                                <h3 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-tight">Clinical Entry</h3>
+                                <p className="text-slate-500 mb-8 leading-relaxed font-medium">Log in with your unique DocID or StaffID provided by the hospital admin along with your secure password.</p>
+                                <label className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-4">Features:</label>
+                                <ul className="space-y-4 text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                                    <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Multi-Role dashboard</li>
+                                    <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Audit-ready logging</li>
+                                </ul>
                             </div>
-                            <h3 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-tight">Clinical Entry</h3>
-                            <p className="text-slate-500 mb-8 leading-relaxed font-medium">Log in with your unique DocID or StaffID provided by the hospital admin along with your secure password.</p>
-                            <label className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-4">Features:</label>
-                            <ul className="space-y-4 text-[11px] font-black text-slate-400 uppercase tracking-wider">
-                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Multi-Role dashboard</li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Audit-ready logging</li>
-                            </ul>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Resusable Module Cards Section */}
-            <section id="portals" className="py-24 px-6 bg-white">
-                <div className="max-w-7xl mx-auto">
-                    <div className="mb-16 text-center space-y-2">
-                        <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">03. Support Portals</h2>
-                        <p className="text-slate-500 font-medium">Select a module to view its specific clinical capabilities.</p>
+                {/* Resusable Module Cards Section */}
+                <section id="portals" className="py-24 px-6 bg-white">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-16 text-center space-y-2">
+                            <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">03. Support Portals</h2>
+                            <p className="text-slate-500 font-medium">Select a module to view its specific clinical capabilities.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {modulesSummary.map((item, idx) => (
+                                <ModulePreviewCard key={idx} item={item} />
+                            ))}
+                        </div>
                     </div>
+                </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {modulesSummary.map((item, idx) => (
-                            <ModulePreviewCard key={idx} item={item} />
-                        ))}
+                {/* Bottom CTA */}
+                <section className="py-24 px-6 bg-slate-950 text-white text-center">
+                    <div className="max-w-3xl mx-auto space-y-8">
+                        <h2 className="text-4xl font-bold leading-tight tracking-tight">Modernizing Healthcare, One Hospital at a Time.</h2>
+                        <p className="text-slate-400 text-lg font-medium">Join thousands of clinical professionals on the MSCureChain ecosystem.</p>
+                        <button onClick={() => router.push('/auth/login')} className="bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform active:scale-95 shadow-2xl shadow-blue-500/20">
+                            Enter Platform
+                        </button>
                     </div>
-                </div>
-            </section>
-
-            {/* Bottom CTA */}
-            <section className="py-24 px-6 bg-slate-950 text-white text-center">
-                <div className="max-w-3xl mx-auto space-y-8">
-                    <h2 className="text-4xl font-bold leading-tight tracking-tight">Modernizing Healthcare, One Hospital at a Time.</h2>
-                    <p className="text-slate-400 text-lg font-medium">Join thousands of clinical professionals on the MSCureChain ecosystem.</p>
-                    <button onClick={() => router.push('/auth/login')} className="bg-blue-600 text-white px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform active:scale-95 shadow-2xl shadow-blue-500/20">
-                        Enter Platform
-                    </button>
-                </div>
-            </section>
+                </section>
+            </main>
 
             <Footer />
         </div>

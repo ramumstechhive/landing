@@ -139,7 +139,9 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col pt-24">
-            <LandingNavbar variant="home" />
+            <header>
+                <LandingNavbar variant="home" />
+            </header>
 
             <main className="flex-grow max-w-7xl mx-auto px-6 py-16 w-full">
                 <div className="text-center mb-16 space-y-4">

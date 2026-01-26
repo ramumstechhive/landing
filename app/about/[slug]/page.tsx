@@ -73,7 +73,9 @@ export default function ModuleDetailPage() {
 
     return (
         <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-sans">
-            <LandingNavbar variant="detail" title={activeModule.title} />
+            <header>
+                <LandingNavbar variant="detail" title={activeModule.title} />
+            </header>
 
             {/* Header / Hero */}
             <header className="pt-32 pb-16 px-6">

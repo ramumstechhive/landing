@@ -113,7 +113,9 @@ export default function ExportPage() {
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col pt-24">
-            <LandingNavbar variant="home" />
+            <header>
+                <LandingNavbar variant="home" />
+            </header>
 
             <main className="flex-grow max-w-7xl mx-auto px-6 py-16 w-full flex flex-col items-center justify-center space-y-8">
                 <div className="text-center space-y-4">

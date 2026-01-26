@@ -45,7 +45,9 @@ export default function ComingSoonPage() {
 
     return (
         <div className="min-h-screen bg-background flex flex-col">
-            <LandingNavbar />
+            <header>
+                <LandingNavbar />
+            </header>
 
             <main className="flex-grow relative overflow-hidden flex flex-col items-center justify-center py-20 px-6">
                 {/* Animated Background Elements */}

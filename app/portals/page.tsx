@@ -129,110 +129,114 @@ export default function PortalsPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
-            <LandingNavbar variant="home" />
-
-            {/* Hero Section */}
-            <header className="pt-32 pb-20 px-6 bg-muted/5 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-5 pointer-events-none" />
-                <div className="max-w-7xl mx-auto text-center space-y-8 relative">
-
-                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
-                        One Platform. <br />
-                        <span className="text-primary-theme">Infinite Sync.</span>
-                    </h1>
-                    <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
-                        MSCureChain isn&apos;t just software—it&apos;s a connected clinical universe. Every portal works in perfect harmony, ensuring that data flows instantly from the patient to the doctor, lab, pharmacy, and admin.
-                    </p>
-                </div>
+            <header>
+                <LandingNavbar variant="home" />
             </header>
 
-            {/* Portals Grid */}
-            <main className="flex-grow py-24 px-6">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {portals.map((portal, idx) => (
-                            <div key={idx} className="group p-8 bg-card border  rounded-[0.5rem] border-primary-theme/50 transition-all duration-500 shadow-sm hover:shadow-2xl hoverShadow-primary-theme/5 flex flex-col">
-                                <div className={`w-14 h-14 ${portal.bg} rounded-2xl flex items-center justify-center ${portal.color} mb-6 group-hover:scale-110 transition-transform`}>
-                                    <portal.icon size={28} />
-                                </div>
-                                <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight uppercase leading-none">{portal.title}</h3>
-                                <p className="text-slate-500 font-medium leading-relaxed mb-8 flex-1">
-                                    {portal.desc}
-                                </p>
-                                <div className="space-y-3 pt-6 border-t border-border">
-                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Key Functionalities:</div>
-                                    {portal.features.slice(0, 3).map((feature, fIdx) => (
-                                        <div key={fIdx} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                            <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
-                                                <CheckCircle2 size={12} className="text-emerald-500" />
-                                            </div>
-                                            {feature}
-                                        </div>
-                                    ))}
-                                    {portal.features.length > 3 && (
-                                        <button
-                                            onClick={() => router.push(`/about/${portal.slug}`)}
-                                            className="mt-2 text-primary-theme text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-1"
-                                        >
-                                            See More <ArrowRight size={10} />
-                                        </button>
-                                    )}
-                                </div>
-                                <button
-                                    onClick={() => router.push(portal.loginUrl || '/auth/login')}
-                                    className="mt-8 w-full py-3 bg-slate-50 hover:bg-primary-theme hover:text-white text-slate-900 border border-primary-theme/40 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn"
-                                >
-                                    Access Portal
-                                    <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                                </button>
-                            </div>
-                        ))}
+            <main className="flex-grow">
+                {/* Hero Section */}
+                <header className="pt-32 pb-20 px-6 bg-muted/5 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-5 pointer-events-none" />
+                    <div className="max-w-7xl mx-auto text-center space-y-8 relative">
+
+                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tighter uppercase">
+                            One Platform. <br />
+                            <span className="text-primary-theme">Infinite Sync.</span>
+                        </h1>
+                        <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
+                            MSCureChain isn&apos;t just software—it&apos;s a connected clinical universe. Every portal works in perfect harmony, ensuring that data flows instantly from the patient to the doctor, lab, pharmacy, and admin.
+                        </p>
                     </div>
+                </header>
 
-                    {/* Clinical Unified Workspace Section */}
-                    <section className="mt-32 p-12 bg-white dark:bg-slate-900 rounded-[1.5rem] border border-border shadow-2xl relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-linear-to-br from-primary-theme/5 to-transparent opacity-50 pointer-events-none" />
-
-                        <div className="relative grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="space-y-8">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-theme/10 text-primary-theme rounded-full text-xs font-bold uppercase tracking-widest">
-                                    <Zap size={14} /> Unified Architecture
+                {/* Portals Grid */}
+                <section className="py-24 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {portals.map((portal, idx) => (
+                                <div key={idx} className="group p-8 bg-card border  rounded-[0.5rem] border-primary-theme/50 transition-all duration-500 shadow-sm hover:shadow-2xl hoverShadow-primary-theme/5 flex flex-col">
+                                    <div className={`w-14 h-14 ${portal.bg} rounded-2xl flex items-center justify-center ${portal.color} mb-6 group-hover:scale-110 transition-transform`}>
+                                        <portal.icon size={28} />
+                                    </div>
+                                    <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight uppercase leading-none">{portal.title}</h3>
+                                    <p className="text-slate-500 font-medium leading-relaxed mb-8 flex-1">
+                                        {portal.desc}
+                                    </p>
+                                    <div className="space-y-3 pt-6 border-t border-border">
+                                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Key Functionalities:</div>
+                                        {portal.features.slice(0, 3).map((feature, fIdx) => (
+                                            <div key={fIdx} className="flex items-center gap-3 text-sm font-bold text-slate-700">
+                                                <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
+                                                    <CheckCircle2 size={12} className="text-emerald-500" />
+                                                </div>
+                                                {feature}
+                                            </div>
+                                        ))}
+                                        {portal.features.length > 3 && (
+                                            <button
+                                                onClick={() => router.push(`/about/${portal.slug}`)}
+                                                className="mt-2 text-primary-theme text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-1"
+                                            >
+                                                See More <ArrowRight size={10} />
+                                            </button>
+                                        )}
+                                    </div>
+                                    <button
+                                        onClick={() => router.push(portal.loginUrl || '/auth/login')}
+                                        className="mt-8 w-full py-3 bg-slate-50 hover:bg-primary-theme hover:text-white text-slate-900 border border-primary-theme/40 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn"
+                                    >
+                                        Access Portal
+                                        <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    </button>
                                 </div>
-                                <h2 className="text-4xl font-black tracking-tight leading-tight uppercase text-slate-900">
-                                    A Complete <br />
-                                    <span className="text-primary-theme">Clinical Universe.</span>
-                                </h2>
-                                <p className="text-slate-500 text-lg leading-relaxed font-medium">
-                                    Experience the power of a fully synchronized healthcare ecosystem. From the moment a patient registers at the helpdesk to the final pharmacy dispensing, every action is tracked, secured, and instantly shared across all relevant portals.
-                                </p>
-                                <ul className="space-y-4">
-                                    {[
-                                        "Instant cross-portal data synchronization",
-                                        "Unified patient medical history access",
-                                        "Automated departmental handovers",
-                                        "Real-time operational transparency"
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest text-slate-600">
-                                            <CheckCircle2 size={16} className="text-primary-theme" />
-                                            {text}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="relative group/image">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-primary-theme/20 to-blue-500/20 rounded-[2rem] blur opacity-25 group-hover/image:opacity-40 transition duration-1000"></div>
-                                <div className="relative rounded-[1.5rem] overflow-hidden border border-slate-200 shadow-2xl bg-white aspect-[4/3] flex items-center justify-center p-4">
-                                    <img
-                                        src="/assets/portal.png"
-                                        alt="Portal Ecosystem Overview"
-                                        className="w-full h-full object-contain transform group-hover/image:scale-[1.03] transition-transform duration-700"
-                                    />
-                                </div>
-                            </div>
+                            ))}
                         </div>
-                    </section>
-                </div>
+
+                        {/* Clinical Unified Workspace Section */}
+                        <section className="mt-32 p-12 bg-white dark:bg-slate-900 rounded-[1.5rem] border border-border shadow-2xl relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-linear-to-br from-primary-theme/5 to-transparent opacity-50 pointer-events-none" />
+
+                            <div className="relative grid lg:grid-cols-2 gap-16 items-center">
+                                <div className="space-y-8">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-theme/10 text-primary-theme rounded-full text-xs font-bold uppercase tracking-widest">
+                                        <Zap size={14} /> Unified Architecture
+                                    </div>
+                                    <h2 className="text-4xl font-black tracking-tight leading-tight uppercase text-slate-900">
+                                        A Complete <br />
+                                        <span className="text-primary-theme">Clinical Universe.</span>
+                                    </h2>
+                                    <p className="text-slate-500 text-lg leading-relaxed font-medium">
+                                        Experience the power of a fully synchronized healthcare ecosystem. From the moment a patient registers at the helpdesk to the final pharmacy dispensing, every action is tracked, secured, and instantly shared across all relevant portals.
+                                    </p>
+                                    <ul className="space-y-4">
+                                        {[
+                                            "Instant cross-portal data synchronization",
+                                            "Unified patient medical history access",
+                                            "Automated departmental handovers",
+                                            "Real-time operational transparency"
+                                        ].map((text, i) => (
+                                            <li key={i} className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest text-slate-600">
+                                                <CheckCircle2 size={16} className="text-primary-theme" />
+                                                {text}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="relative group/image">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-primary-theme/20 to-blue-500/20 rounded-[2rem] blur opacity-25 group-hover/image:opacity-40 transition duration-1000"></div>
+                                    <div className="relative rounded-[1.5rem] overflow-hidden border border-slate-200 shadow-2xl bg-white aspect-[4/3] flex items-center justify-center p-4">
+                                        <img
+                                            src="/assets/portal.png"
+                                            alt="Portal Ecosystem Overview"
+                                            className="w-full h-full object-contain transform group-hover/image:scale-[1.03] transition-transform duration-700"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
             </main>
 
             <Footer />

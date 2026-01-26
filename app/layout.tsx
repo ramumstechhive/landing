@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://mscurechain.com'),
   title: {
-    default: "MSCureChain - Modern Hospital Management System",
+    default: "MSCureChain | AI-Powered Hospital Management System",
     template: "%s | MSCureChain"
   },
-  description: "Comprehensive digital healthcare platform providing seamless patient care, appointment booking, electronic health records, and integrated hospital management. Transform your healthcare experience with MSCureChain.",
+  description: "MSCureChain is an all-in-one AI-powered hospital management system (HMS) digitalizing healthcare. Integrated patient portals, doctor terminals, lab & pharmacy management, and smart appointment booking for modern clinics and hospitals.",
   keywords: [
     "hospital management system",
     "healthcare software",
@@ -35,7 +35,11 @@ export const metadata: Metadata = {
     "hospital software",
     "healthcare technology",
     "MSCureChain",
-    "clinical management system"
+    "clinical management system",
+    "AI healthcare",
+    "smart hospital",
+    "OPD management",
+    "HMS software"
   ],
   authors: [{ name: "MS Tech Hive", url: "https://mstechhive.com" }],
   creator: "MS Tech Hive",
@@ -67,21 +71,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mscurechain.com',
     siteName: 'MSCureChain',
-    title: 'MSCureChain - Modern Hospital Management System',
-    description: 'Comprehensive digital healthcare platform providing seamless patient care, appointment booking, electronic health records, and integrated hospital management.',
+    title: 'MSCureChain | AI-Powered Hospital Management System',
+    description: 'Transform your healthcare experience with MSCureChain. A comprehensive digital platform for hospitals, doctors, and patients.',
     images: [
       {
         url: '/assets/logo.png',
         width: 1200,
         height: 630,
-        alt: 'MSCureChain Hospital Management System',
+        alt: 'MSCureChain - Modern Hospital Management System',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MSCureChain - Modern Hospital Management System',
-    description: 'Comprehensive digital healthcare platform providing seamless patient care, appointment booking, and integrated hospital management.',
+    title: 'MSCureChain | AI-Powered Hospital Management System',
+    description: 'Digitalize your curing process with MSCureChain. Integrated hospital management solutions for the next generation of healthcare.',
     creator: '@MSTECHHIVE',
     site: '@MSTECHHIVE',
     images: ['/assets/logo.png'],
@@ -97,6 +101,7 @@ export const metadata: Metadata = {
 
 import { Toaster } from 'react-hot-toast';
 import FloatingChat from '@/components/chat/FloatingChat';
+import SchemaScripts from '@/components/seo/SchemaScripts';
 
 export default function RootLayout({
   children,
@@ -106,6 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <SchemaScripts />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Oleo+Script+Swash+Caps:wght@400;700&family=Bruno+Ace+SC&display=swap" rel="stylesheet" />
