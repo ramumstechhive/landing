@@ -100,6 +100,7 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from 'react-hot-toast';
+import PopupForm from "@/components/popup/PopupForm";
 import FloatingChat from '@/components/chat/FloatingChat';
 import SchemaScripts from '@/components/seo/SchemaScripts';
 
@@ -166,6 +167,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Toaster position="top-center" />
+        <PopupForm />
         {children}
         <FloatingChat />
       </body>

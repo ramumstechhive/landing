@@ -10,8 +10,12 @@ import {
     Building2,
     MapPin,
     CheckCircle2,
-    AlertCircle
+    AlertCircle,
+    Calendar,
+    Clock
 } from 'lucide-react';
+import TimeSlotPicker from '@/components/ui/TimeSlotPicker';
+import { submitToGoogleSheets } from '@/lib/googleSheetService';
 
 interface Contact {
     name: string;
@@ -19,6 +23,8 @@ interface Contact {
     email: string;
     businessName: string;
     address: string;
+    demoDate: string;
+    demoTime: string;
     timestamp: string;
 }
 
@@ -29,6 +35,8 @@ export default function ContactPage() {
         email: '',
         businessName: '',
         address: '',
+        demoDate: '',
+        demoTime: '',
     });
 
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -82,6 +90,14 @@ export default function ContactPage() {
             newErrors.address = 'Address is required';
         }
 
+        if (!formData.demoDate) {
+            newErrors.demoDate = 'Demo Date is required';
+        }
+
+        if (!formData.demoTime) {
+            newErrors.demoTime = 'Demo Time is required';
+        }
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -95,9 +111,17 @@ export default function ContactPage() {
                 timestamp: new Date().toLocaleString(),
             };
 
+            // Save to local storage
             const updatedContacts = [newContact, ...contacts];
             setContacts(updatedContacts);
             localStorage.setItem('mscure_contacts', JSON.stringify(updatedContacts));
+
+            // Submit to Google Sheets (Async)
+            submitToGoogleSheets(formData).then(result => {
+                if (!result.success) {
+                    console.error("Failed to sync with Google Sheets");
+                }
+            });
 
             setFormData({
                 name: '',
@@ -105,13 +129,15 @@ export default function ContactPage() {
                 email: '',
                 businessName: '',
                 address: '',
+                demoDate: '',
+                demoTime: '',
             });
             setSubmitted(true);
             setTimeout(() => setSubmitted(false), 5000);
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
 
         // Strict restriction for phone field
@@ -127,6 +153,13 @@ export default function ContactPage() {
             setFormData(prev => ({ ...prev, [name]: value }));
         }
 
+        if (name === 'demoDate') {
+            setFormData(prev => ({ ...prev, demoDate: value }));
+        }
+        if (name === 'demoTime') {
+            setFormData(prev => ({ ...prev, demoTime: value }));
+        }
+
         // Clear error when user starts typing
         if (errors[name]) {
             setErrors(prev => {
@@ -138,44 +171,44 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col pt-24">
+        <div className="min-h-screen bg-slate-50 flex flex-col pt-20">
             <header>
                 <LandingNavbar variant="home" />
             </header>
 
-            <main className="flex-grow max-w-7xl mx-auto px-6 py-16 w-full">
-                <div className="text-center mb-16 space-y-4">
-                    <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">
+            <main className="flex-grow max-w-7xl mx-auto px-6 py-8 w-full">
+                <div className="text-center mb-8 space-y-2">
+                    <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight uppercase">
                         Let&apos;s <span className="text-primary-theme">Connect</span>
                     </h1>
-                    <p className="text-slate-500 font-medium max-w-2xl mx-auto">
+                    <p className="text-slate-500 font-medium max-w-2xl mx-auto text-sm">
                         Scale your healthcare infrastructure with the world&apos;s most advanced digital curing platform.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-12">
+                <div className="grid lg:grid-cols-12 gap-8">
                     {/* Submission History / Info Side */}
-                    <div className="lg:col-span-5 space-y-8">
-                        <div className="bg-white p-8 rounded-[1.5rem] border border-slate-200 shadow-sm space-y-6">
-                            <h3 className="text-xl font-bold text-slate-900 tracking-tight uppercase">Contact Information</h3>
-                            <p className="text-slate-500 text-sm leading-relaxed">
+                    <div className="lg:col-span-5 space-y-6">
+                        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 className="text-lg font-bold text-slate-900 tracking-tight uppercase">Contact Information</h3>
+                            <p className="text-slate-500 text-xs leading-relaxed">
                                 Fill out the form and our team will get back to you within 24 hours to discuss how we can transform your clinical operations.
                             </p>
 
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
-                                        <Mail size={18} />
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
+                                        <Mail size={16} />
                                     </div>
                                     <span className="text-slate-700 font-bold">info@mstechhive.com</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
-                                        <Phone size={18} />
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
+                                        <Phone size={16} />
                                     </div>
                                     <span className="text-slate-700 font-bold">+91 9032223352</span>
-                                    <div className="w-10 h-10 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
-                                        <Phone size={18} />
+                                    <div className="w-8 h-8 rounded-full bg-primary-theme/10 flex items-center justify-center text-primary-theme">
+                                        <Phone size={16} />
                                     </div>
                                     <span className="text-slate-700 font-bold">+91 9492321619</span>
 
@@ -188,18 +221,18 @@ export default function ContactPage() {
 
                     {/* Form Side */}
                     <div className="lg:col-span-7">
-                        <div className="bg-white p-10 md:p-14 rounded-[2rem] border border-slate-200 shadow-2xl relative overflow-hidden">
+                        <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-xl relative overflow-hidden">
                             {submitted && (
                                 <div className="absolute inset-0 z-50 bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all">
-                                    <div className="text-center space-y-4">
-                                        <div className="w-20 h-20 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto shadow-xl">
-                                            <CheckCircle2 size={40} />
+                                    <div className="text-center space-y-3">
+                                        <div className="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto shadow-lg">
+                                            <CheckCircle2 size={32} />
                                         </div>
-                                        <h3 className="text-2xl font-black text-slate-900 uppercase">Message Received</h3>
-                                        <p className="text-slate-500 font-medium">Your submission has been stored in our local pool.</p>
+                                        <h3 className="text-xl font-black text-slate-900 uppercase">Message Received</h3>
+                                        <p className="text-slate-500 font-medium text-sm">Your submission has been stored in our local pool.</p>
                                         <button
                                             onClick={() => setSubmitted(false)}
-                                            className="text-primary-theme font-black text-sm uppercase underline"
+                                            className="text-primary-theme font-black text-xs uppercase underline"
                                         >
                                             Send another message
                                         </button>
@@ -207,8 +240,8 @@ export default function ContactPage() {
                                 </div>
                             )}
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid md:grid-cols-2 gap-6">
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid md:grid-cols-2 gap-4">
                                     {/* Name */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
@@ -220,7 +253,7 @@ export default function ContactPage() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="e.g. John Doe"
-                                            className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium ${errors.name ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                            className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium text-sm ${errors.name ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                         />
                                         {errors.name && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.name}</p>}
                                     </div>
@@ -236,13 +269,13 @@ export default function ContactPage() {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             placeholder="e.g. 9876543210"
-                                            className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium ${errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                            className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium text-sm ${errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                         />
                                         {errors.phone && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.phone}</p>}
                                     </div>
                                 </div>
 
-                                <div className="grid md:grid-cols-2 gap-6">
+                                <div className="grid md:grid-cols-2 gap-4">
                                     {/* Email */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
@@ -254,7 +287,7 @@ export default function ContactPage() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="e.g. john@example.com"
-                                            className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium ${errors.email ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                            className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium text-sm ${errors.email ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                         />
                                         {errors.email && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.email}</p>}
                                     </div>
@@ -270,9 +303,38 @@ export default function ContactPage() {
                                             value={formData.businessName}
                                             onChange={handleChange}
                                             placeholder="Optional"
-                                            className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium ${errors.businessName ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                            className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium text-sm ${errors.businessName ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                         />
                                         {errors.businessName && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.businessName}</p>}
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    {/* Demo Date */}
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                            <Calendar size={14} className="text-primary-theme" /> Demo Date
+                                        </label>
+                                        <input
+                                            name="demoDate"
+                                            type="date"
+                                            value={formData.demoDate}
+                                            onChange={handleChange}
+                                            min={new Date().toISOString().split('T')[0]} // Prevent past dates
+                                            className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium text-sm ${errors.demoDate ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                        />
+                                        {errors.demoDate && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.demoDate}</p>}
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                            <Clock size={14} className="text-primary-theme" /> Demo Time (9 AM - 6:30 PM)
+                                        </label>
+                                        <TimeSlotPicker
+                                            value={formData.demoTime}
+                                            onChange={(val) => setFormData(prev => ({ ...prev, demoTime: val }))}
+                                            error={errors.demoTime}
+                                        />
                                     </div>
                                 </div>
 
@@ -285,17 +347,17 @@ export default function ContactPage() {
                                         name="address"
                                         value={formData.address}
                                         onChange={handleChange}
-                                        rows={4}
+                                        rows={3}
                                         placeholder="Enter your full business or residence address"
-                                        className={`w-full px-5 py-4 border rounded-xl outline-none transition-all font-medium resize-none ${errors.address ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
+                                        className={`w-full px-4 py-3 border rounded-xl outline-none transition-all font-medium resize-none text-sm ${errors.address ? 'border-red-500 bg-red-50' : 'border-slate-100 bg-slate-50 focus:border-primary-theme focus:ring-4 focus:ring-primary-theme/5'}`}
                                     />
                                     {errors.address && <p className="text-red-500 text-[10px] font-bold uppercase tracking-wide flex items-center gap-1"><AlertCircle size={10} /> {errors.address}</p>}
                                 </div>
 
-                                <div className="pt-4">
+                                <div className="pt-2">
                                     <button
                                         type="submit"
-                                        className="w-full bg-primary-theme text-white py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-xl hover:bg-primary-dark transition-all active:scale-[0.98] group"
+                                        className="w-full bg-primary-theme text-white py-3 rounded-xl font-black text-sm uppercase tracking-[0.2em] shadow-xl hover:bg-primary-dark transition-all active:scale-[0.98] group"
                                     >
                                         Submit Details
                                     </button>

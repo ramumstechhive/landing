@@ -82,7 +82,13 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
                     onClick={() => router.push('/')}
                 >
 
-                    <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 object-contain" />
+                    <div className="relative w-8 h-8">
+                        <img
+                            src="/assets/logo.png"
+                            alt="Logo"
+                            className="w-full h-full object-contain"
+                        />
+                    </div>
 
                     <span className="text-xl font-bold bg-linear-to-r from-primary-theme to-blue-400 bg-clip-text text-transparent">
                         MSCureChain
@@ -111,7 +117,13 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
 
 
                     <button
-                        onClick={() => router.push('/auth/login')}
+                        onClick={() => {
+                            if (variant === 'detail') {
+                                router.push('/auth/login');
+                            } else {
+                                router.push('/contact');
+                            }
+                        }}
                         className="hidden sm:block bg-primary-theme hover:bg-primary-theme/90 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-primary-theme/20 hover:-translate-y-0.5"
                     >
                         {variant === 'detail' ? 'Sign In' : 'Request a Free Demo'}
@@ -144,7 +156,7 @@ export default function LandingNavbar({ variant = 'home', title }: LandingNavbar
                     <button
                         onClick={() => {
                             setMobileMenuOpen(false);
-                            router.push('/auth/login');
+                            router.push('/contact');
                         }}
                         className="w-full bg-primary-theme text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary-theme/20"
                     >
