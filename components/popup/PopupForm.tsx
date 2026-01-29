@@ -38,7 +38,7 @@ export default function PopupForm() {
         if (!isVisible) {
             timer = setTimeout(() => {
                 setIsVisible(true);
-            }, 5000);
+            }, 60000);
         }
 
         return () => clearTimeout(timer);
