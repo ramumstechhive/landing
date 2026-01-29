@@ -171,7 +171,7 @@ export default function PopupForm() {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-            <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+            <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-4xl relative overflow-hidden flex flex-col md:flex-row h-full max-h-[90vh] md:max-h-[600px] overflow-y-auto md:overflow-hidden">
                 {/* Close Button */}
                 <button
                     onClick={() => { setIsVisible(false); }}
@@ -180,7 +180,7 @@ export default function PopupForm() {
                     <X size={20} />
                 </button>
 
-                <div className="grid md:grid-cols-12 h-full min-h-[400px]">
+                <div className="grid md:grid-cols-12 h-full min-h-full md:min-h-[400px]">
                     {/* Left Sidebar - Branding */}
                     <div className="hidden md:flex md:col-span-4 bg-slate-900 relative flex-col justify-between p-8 text-white">
                         <div className="absolute inset-0 bg-primary-theme/10 z-0"></div>
