@@ -636,7 +636,7 @@ const BedManagementMarvel = () => {
             category: "Assignment",
             desc: "Room 203 assigned, Bed 1 secured. Surgery scheduled and synchronized with clinical teams for instant readiness.",
             icon: Bed,
-            image: "../assets/bed.png",
+            image: "/assets/bed.png",
             bgText: "ALLOCATE",
             color: "#3b82f6"
         },
@@ -663,7 +663,7 @@ const BedManagementMarvel = () => {
             category: "Finalization",
             desc: "Final medical summary generated. Home care instructions provided for seamless post-hospital recovery.",
             icon: FileText,
-            image: "../assets/discharge.png",
+            image: "/assets/discharge.png",
             bgText: "DISCHARGE",
             color: "#8b5cf6"
         }
@@ -677,113 +677,169 @@ const BedManagementMarvel = () => {
     }, []);
 
     return (
-        <section className="relative h-screen bg-white overflow-hidden py-20 px-6 md:px-20">
-            {/* Background Layered Text */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 0.05, x: 0 }}
-                    exit={{ opacity: 0, x: 100 }}
-                    transition={{ duration: 0.8, ease: "circOut" }}
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                >
-                    <span className="text-[20vw] font-black tracking-tighter text-slate-900 select-none">
-                        {steps[currentIndex].bgText}
-                    </span>
-                </motion.div>
-            </AnimatePresence>
+        <section className="relative min-h-screen bg-white overflow-hidden py-16 px-6 lg:px-20">
+            {/* Background Layered Text - Desktop */}
+            <div className="hidden lg:block">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0, x: -100 }}
+                        animate={{ opacity: 0.05, x: 0 }}
+                        exit={{ opacity: 0, x: 100 }}
+                        transition={{ duration: 0.8, ease: "circOut" }}
+                        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                    >
+                        <span className="text-[20vw] font-black tracking-tighter text-slate-900 select-none">
+                            {steps[currentIndex].bgText}
+                        </span>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
 
             {/* Main Stage */}
             <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center">
-                <div className="relative group/card bg-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] rounded-[2.5rem] border border-slate-100 overflow-hidden min-h-[500px] flex flex-col md:flex-row">
 
-                    {/* Content Section (Left) */}
-                    <div className="flex-1 p-10 md:p-16 flex flex-col justify-between relative z-20">
-                        <div className="space-y-8">
-                            <motion.div
-                                key={`cat-${currentIndex}`}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="flex items-center gap-2"
-                            >
-                                <div className="w-2 h-2 rounded-full bg-primary-theme animate-pulse" />
-                                <span className="text-sm font-black uppercase tracking-[0.3em] text-slate-400">
-                                    {steps[currentIndex].category}
-                                </span>
-                            </motion.div>
+                {/* Mobile and Tablet View: Vertical Cards */}
+                <div className="flex flex-col gap-10 lg:hidden text-slate-900">
+                    <div className="text-center space-y-3 mb-4">
+                        <span className="bg-primary-theme text-white px-4 py-1 text-xs font-black uppercase tracking-widest rounded-full">Inpatient Care</span>
+                        <h2 className="text-3xl font-black text-slate-900 tracking-tight uppercase">Bed Management System</h2>
+                    </div>
 
-                            <motion.h2
-                                key={`title-${currentIndex}`}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-none"
-                            >
-                                {steps[currentIndex].title}
-                            </motion.h2>
+                    {steps.map((step, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col"
+                        >
+                            {/* Image Section */}
+                            <div className="relative h-64 md:h-96 w-full">
+                                <div
+                                    className="absolute inset-0 z-10 opacity-10"
+                                    style={{ backgroundColor: step.color }}
+                                />
+                                <div className="absolute top-4 left-6 z-30">
+                                    <span className="bg-primary-theme text-white px-3 py-1 text-lg font-black uppercase">CURE</span>
+                                </div>
+                                <img
+                                    src={step.image}
+                                    alt={step.title}
+                                    className="w-full h-full object-cover p-4 md:p-8 rounded-[2.5rem] relative z-20"
+                                />
+                            </div>
 
-                            <motion.p
-                                key={`desc-${currentIndex}`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.2 }}
-                                className="text-lg text-slate-500 leading-relaxed max-w-md font-medium"
-                            >
-                                {steps[currentIndex].desc}
-                            </motion.p>
+                            {/* Content Section */}
+                            <div className="p-8 md:p-12 space-y-4">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-primary-theme animate-pulse" />
+                                    <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-slate-400">
+                                        {step.category}
+                                    </span>
+                                </div>
+                                <h3 className="text-2xl md:text-4xl font-black text-slate-900 uppercase tracking-tight">{step.title}</h3>
+                                <p className="text-slate-500 font-medium leading-relaxed text-sm md:text-base">
+                                    {step.desc}
+                                </p>
+
+                                <div className="flex items-center gap-4 pt-4 border-t border-slate-50">
+                                    {[Users, ShieldCheck, Database, Globe].map((Icon, i) => (
+                                        <Icon key={i} size={20} className="text-slate-300" />
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Desktop View: Interactive Carousel */}
+                <div className="hidden lg:block h-full">
+                    <div className="relative group/card bg-white shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] rounded-[2.5rem] border border-slate-100 overflow-hidden min-h-[500px] flex flex-row">
+
+                        {/* Content Section (Left) */}
+                        <div className="flex-1 p-16 flex flex-col justify-between relative z-20">
+                            <div className="space-y-8">
+                                <motion.div
+                                    key={`cat-${currentIndex}`}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="flex items-center gap-2"
+                                >
+                                    <div className="w-2 h-2 rounded-full bg-primary-theme animate-pulse" />
+                                    <span className="text-sm font-black uppercase tracking-[0.3em] text-slate-400">
+                                        {steps[currentIndex].category}
+                                    </span>
+                                </motion.div>
+
+                                <motion.h2
+                                    key={`title-${currentIndex}`}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    className="text-7xl font-black text-slate-900 tracking-tighter uppercase leading-none"
+                                >
+                                    {steps[currentIndex].title}
+                                </motion.h2>
+
+                                <motion.p
+                                    key={`desc-${currentIndex}`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="text-lg text-slate-500 leading-relaxed max-w-md font-medium"
+                                >
+                                    {steps[currentIndex].desc}
+                                </motion.p>
+                            </div>
+
+                            <div className="flex items-center gap-6 pt-10 border-t border-slate-100 mt-10">
+                                {[Users, ShieldCheck, Database, Globe].map((Icon, i) => (
+                                    <Icon key={i} size={18} className="text-slate-300 hover:text-primary-theme cursor-pointer transition-colors" />
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Social/Bottom Icons */}
-                        <div className="flex items-center gap-6 pt-10 border-t border-slate-100 mt-10">
-                            {[Users, ShieldCheck, Database, Globe].map((Icon, i) => (
-                                <Icon key={i} size={18} className="text-slate-300 hover:text-primary-theme cursor-pointer transition-colors" />
+                        {/* Image Section / Slanted Panel (Right) */}
+                        <div className="flex-1 relative overflow-hidden bg-slate-50">
+                            <motion.div
+                                animate={{ backgroundColor: steps[currentIndex].color }}
+                                className="absolute inset-0 z-10 transition-colors duration-1000"
+                                style={{ clipPath: "polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
+                            />
+
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={`img-${currentIndex}`}
+                                    initial={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
+                                    animate={{ opacity: 1, scale: 1.1, x: 0, rotate: -2 }}
+                                    exit={{ opacity: 0, scale: 0.5, x: -50, rotate: -10 }}
+                                    transition={{ type: "spring", damping: 15, stiffness: 100 }}
+                                    className="absolute inset-0 z-20 flex items-center justify-center p-10 mt-10 pointer-events-none"
+                                >
+                                    <img
+                                        src={steps[currentIndex].image}
+                                        alt={steps[currentIndex].title}
+                                        className="w-full h-full object-cover rounded-[2rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] border-4 border-white/20"
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        {/* Badge Positioning */}
+                        <div className="absolute top-5 left-10 z-30">
+                            <span className="bg-primary-theme text-white px-3 py-1 text-2xl font-black uppercase tracking-tighter shadow-lg">CURE</span>
+                        </div>
+
+                        {/* Progress Dots */}
+                        <div className="absolute right-10 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-2">
+                            {steps.map((_, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => setCurrentIndex(i)}
+                                    className={`w-1 h-6 transition-all duration-500 rounded-full cursor-pointer ${i === currentIndex ? 'bg-white scale-y-150 shadow-md' : 'bg-white/30 hover:bg-white/50'}`}
+                                />
                             ))}
                         </div>
-                    </div>
-
-                    {/* Image Section / Slanted Panel (Right) */}
-                    <div className="flex-1 relative overflow-hidden bg-slate-50">
-                        {/* Slanted Decor */}
-                        <motion.div
-                            animate={{ backgroundColor: steps[currentIndex].color }}
-                            className="absolute inset-0 z-10 transition-colors duration-1000"
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                            style={{ clipPath: "polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%)" } as any}
-                        />
-
-                        {/* Pop-out Image Wrapper */}
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={`img-${currentIndex}`}
-                                initial={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
-                                animate={{ opacity: 1, scale: 1.1, x: 0, rotate: -2 }}
-                                exit={{ opacity: 0, scale: 0.5, x: -50, rotate: -10 }}
-                                transition={{ type: "spring", damping: 15, stiffness: 100 }}
-                                className="absolute inset-0 z-20 flex items-center justify-center p-10 mt-10 pointer-events-none"
-                            >
-                                <img
-                                    src={steps[currentIndex].image}
-                                    alt={steps[currentIndex].title}
-                                    className="w-full h-full object-cover rounded-[2rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] border-4 border-white/20"
-                                />
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-
-                    {/* Marvel-style Logo Placeholder Area */}
-                    <div className="absolute top-5 left-10 z-30">
-                        <span className="bg-primary-theme text-white px-3 py-1 text-2xl font-black uppercase tracking-tighter">CURE</span>
-                    </div>
-
-                    {/* Progress Dots (Side) */}
-                    <div className="absolute right-10 top-1/2 -translate-y-1/2 z-30 flex flex-col gap-2">
-                        {steps.map((_, i) => (
-                            <div
-                                key={i}
-                                className={`w-1 h-6 transition-all duration-500 rounded-full ${i === currentIndex ? 'bg-white scale-y-150' : 'bg-white/30'}`}
-                            />
-                        ))}
                     </div>
                 </div>
             </div>

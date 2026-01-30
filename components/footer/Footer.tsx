@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
                         </p>
                         <div className="flex space-x-3">
                             <a
-                                href="https://www.facebook.com/people/M-Techhive/pfbid02aehgvVvXUYcTmT4HUYZfLGzSNjJSTJkQ6FCG7sAuj6SRPR4u8wjif1RN24pBhof6l/"
+                                href="https://www.facebook.com/profile.php?id=61585136090341"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-blue-600"
@@ -42,7 +42,17 @@ const Footer = () => {
                                 <Facebook size={18} />
                             </a>
                             <a
-                                href="https://x.com/MSTECHHIVE"
+                                href="https://www.youtube.com/@MscureChain"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-blue-600"
+                                style={{ backgroundColor: 'var(--bg-color)' }}
+                                aria-label="Facebook"
+                            >
+                                <Youtube size={18} />
+                            </a>
+                            <a
+                                href="http://x.com/Mscurechain"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-blue-600"
@@ -62,7 +72,7 @@ const Footer = () => {
                                 <Linkedin size={18} />
                             </a>
                             <a
-                                href="https://www.instagram.com/mstechhive/"
+                                href="https://www.instagram.com/mscurechain?igsh=MXVtdXJkdmwwbGMxcQ=="
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-blue-600"
@@ -85,10 +95,10 @@ const Footer = () => {
                                 <Link href="/about">About Us</Link>
                             </li>
                             <li>
-                                <Link href="/auth/login">Appointment</Link>
+                                <Link href="/contact">Appointment</Link>
                             </li>
                             <li>
-                                <Link href="/auth/login">Emergency Care</Link>
+                                <Link href="/contact">Emergency Care</Link>
                             </li>
                         </ul>
                     </div>
@@ -98,20 +108,20 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold" style={{ color: 'var(--text-color)' }}>Our Services</h4>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/auth/login">Appointment Booking</Link>
+                                <Link href="/contact">Appointment Booking</Link>
                             </li>
 
                             <li>
-                                <Link href="/auth/login">Digital Prescriptions</Link>
+                                <Link href="/contact">Digital Prescriptions</Link>
                             </li>
                             <li>
-                                <Link href="/auth/login">Real Time Notifications</Link>
+                                <Link href="/contact">Real Time Notifications</Link>
                             </li>
                             <li>
-                                <Link href="/auth/login">AI-Powered Symptom Checker</Link>
+                                <Link href="/contact">AI-Powered Symptom Checker</Link>
                             </li>
                             <li>
-                                <Link href="/auth/login">Hospital and Doctor Management</Link>
+                                <Link href="/contact">Hospital and Doctor Management</Link>
                             </li>
                         </ul>
                     </div>
@@ -137,10 +147,16 @@ const Footer = () => {
                                     +91 9032223352
                                 </a>
                             </li>
+                             <li className="flex items-center space-x-3 group">
+                                <Phone size={18} className="text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                                <a href="tel:+919492321619" className="text-sm hover:text-blue-400 transition-colors duration-200">
+                                   +91 9492321619
+                                </a>
+                            </li>
                             <li className="flex items-center space-x-3 group">
                                 <Mail size={18} className="text-blue-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                                <a href="mailto:info@mstechhive.com" className="text-sm hover:text-blue-400 transition-colors duration-200">
-                                    info@mstechhive.com
+                                <a href="mailto:info@mscurechain.com" className="text-sm hover:text-blue-400 transition-colors duration-200">
+                                    info@mscurechain.com
                                 </a>
                             </li>
                         </ul>
