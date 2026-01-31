@@ -163,7 +163,7 @@ export default function AboutPage() {
                                     <Smartphone size={28} />
                                 </div>
                                 <h3 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-tight">Patient Entry</h3>
-                                <p className="text-slate-500 mb-8 leading-relaxed font-medium">Simple and secure. Log in with your registered mobile number and get an instant OTP code sent to your phone.</p>
+                                <p className="text-slate-500 mb-8 leading-relaxed font-medium">Simple and secure. Log in with your registered mobile number and create password .</p>
                                 <label className="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-4">Features:</label>
                                 <ul className="space-y-4 text-[11px] font-black text-slate-400 uppercase tracking-wider">
                                     <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-500" /> Password-free login</li>

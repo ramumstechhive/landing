@@ -115,10 +115,10 @@ const Footer = () => {
                                 <Link href="/contact">Digital Prescriptions</Link>
                             </li>
                             <li>
-                                <Link href="/contact">Real Time Notifications</Link>
+                                <Link href="/contact">Lab & Pharama Integration</Link>
                             </li>
                             <li>
-                                <Link href="/contact">AI-Powered Symptom Checker</Link>
+                                <Link href="/contact">IPD Bed Management</Link>
                             </li>
                             <li>
                                 <Link href="/contact">Hospital and Doctor Management</Link>

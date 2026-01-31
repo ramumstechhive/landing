@@ -4,7 +4,7 @@
         "slug": "patient-portal",
         "icon": "User",
         "image": "../assets/paportal.avif",
-        "loginWith": "Mobile Number + OTP",
+        "loginWith": "Mobile Number + Password",
         "shortDesc": "Complete health dashboard for patients and their families.",
         "sections": [
             {
